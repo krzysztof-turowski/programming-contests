@@ -61,7 +61,7 @@ std::pair<int, int> solve(
       count_S++;
     }
   }
-  return make_pair(max_S, count_S);
+  return std::make_pair(max_S, count_S);
 }
 
 std::pair<int, int> solve_2(
@@ -95,7 +95,7 @@ std::pair<int, int> solve_2(
       count_S++;
     }
   }
-  return make_pair(max_S, count_S);
+  return std::make_pair(max_S, count_S);
 }
 
 int main() {

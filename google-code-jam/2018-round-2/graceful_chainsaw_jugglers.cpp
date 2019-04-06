@@ -14,7 +14,7 @@ int main() {
         continue;
       for (int k = MAX - 1; k >= i; k--)
         for (int l = MAX - 1; l >= j; l--)
-          A[k][l] = max(A[k][l], A[k - i][l - j] + 1);
+          A[k][l] = std::max(A[k][l], A[k - i][l - j] + 1);
       }
 
   int T, R, B;
