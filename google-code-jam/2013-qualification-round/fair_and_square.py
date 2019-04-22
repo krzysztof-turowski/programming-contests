@@ -1,11 +1,17 @@
 #!/usr/bin/python
 
-from bisect import bisect_left
-from bisect import bisect_right
+def bisect(L, v):
+    low, high = -1, len(L)
+    while low + 1 != high:
+        mid = int((low + high) / 2)
+        if L[mid] < v:
+            low = mid
+        else:
+            high = mid
+    return low
 
 def check(n):
-    n = n * n
-    return str(n) == str(n)[::-1]
+    return str(n * n) == str(n * n)[::-1]
 
 def compute(L, n):
     out = []
@@ -20,9 +26,9 @@ def compute(L, n):
 
 def run():
     L = compute([str(x) for x in range(1, 4)], 53)
-    N = int(raw_input())
+    N = int(input())
     for t in range(N):
-        A, B = [int(x) for x in raw_input().split()]
-        print "Case #{0}: {1}".format(t + 1, bisect_right(L, B) - bisect_left(L, A))
+        A, B = [int(x) for x in input().split()]
+        print("Case #{0}: {1}".format(t + 1, bisect(L, B + 1) - bisect(L, A)))
 
 run()
