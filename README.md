@@ -21,13 +21,21 @@ Code from various programming contests: Google Code Jam, Facebook Hacker Cup, SP
 - 2015
   - Qualification Round: 44th place, 4/4 small, 4/4 large
   - Round 1A: 865th place, 3/3 small, 2/3 large
-  - Round 1B: 972th place, 2/4 small, 1/4 large
+  - Round 2: 972th place, 2/4 small, 1/4 large
+- 2016-2018
+  - did not compete
+- 2019
+  - Qualification Round: 29th place, 4/4 small, 6/6 large
+  - Round 1A: 315th place, 3/3 small, 2/3 large
+  - Round 2: 1151th place, 2/4 small, 1/4 large
 
 ## Facebook Hacker Cup results
 
 - 2013
   - Qualification Round: 3776th place, 1/3 problems
   - Round 1: 3521th place, 1/3 problems
+- 2014
+  - did not compete
 - 2015
   - Qualification Round: 783th place, 3/3 problems
   - Round 1: 69th place, 4/4 problems
@@ -39,3 +47,5 @@ Code from various programming contests: Google Code Jam, Facebook Hacker Cup, SP
 - 2017
   - Qualification Round: 7120th place, 1/3 problems
   - Round 1: 3443th place, 1/4 problems
+- 2018
+  - did not compete
