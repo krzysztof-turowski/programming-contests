@@ -17,7 +17,7 @@ Code from various programming contests: Google Code Jam, Facebook Hacker Cup, SP
   - Qualification Round: 3343th place, 4/4 small, 1/3 large
   - Round 1A: 1221th place, 2/3 small, 1/3 large
   - Round 1B: 4689th place, 1/3 small, 0/3 large
-  - Round 1C: 1221th place, 1/3 small, 0/3 large
+  - Round 1C: 3489th place, 1/3 small, 0/3 large
 - 2015
   - Qualification Round: 44th place, 4/4 small, 4/4 large
   - Round 1A: 865th place, 3/3 small, 2/3 large
@@ -49,3 +49,7 @@ Code from various programming contests: Google Code Jam, Facebook Hacker Cup, SP
   - Round 1: 3443th place, 1/4 problems
 - 2018
   - did not compete
+- 2019
+  - Qualification Round: 1427th place, 2/4 problems
+  - Round 1: 244th place, 3/4 problems
+  - Round 2: did not compete
