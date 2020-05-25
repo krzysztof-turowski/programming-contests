@@ -13,7 +13,7 @@ def solve(A, B):
             LA, LB = LA + A[i], LB + B[i]
             if LB < LA:
                 row[i] = '\\'
-        X = [a for a in A]
+        X = A
         for i, _ in enumerate(A):
             A[i] = ((X[i] if row[i] == '.' else 0)
                     + (X[i - 1] if (i > 0 and row[i - 1] == '\\') else 0)

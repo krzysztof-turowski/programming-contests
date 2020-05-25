@@ -21,8 +21,8 @@ def solve(N, B):
         if after + counter * (2 ** len(L)) < before:
             counter += 1
         after += counter * (2 ** len(L))
-        out += [v for v in range(before + 1, after)]
-    out += [v for v in range(after + 1, N)]
+        out += list(range(before + 1, after))
+    out += list(range(after + 1, N))
     return ' '.join(str(v) for v in out)
 
 def run():

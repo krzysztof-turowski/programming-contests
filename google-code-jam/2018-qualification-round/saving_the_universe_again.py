@@ -47,7 +47,7 @@ def solve(P, D):
 def run():
     T = int(input())
     for t in range(T):
-        D, P = [x for x in input().split()]
+        D, P = input().split()
         print("Case #{0}: {1}".format(t + 1, solve(P, int(D))))
 
 run()
