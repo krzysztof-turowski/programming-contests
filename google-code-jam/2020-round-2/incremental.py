@@ -29,7 +29,7 @@ def solve(L, R):
 def run():
     T = int(input())
     for i in range(T):
-        L, R = [int(x) for x in input().split()]
+        L, R = (int(x) for x in input().split())
         print('Case #{0}: {1} {2} {3}'.format(i + 1, *solve(L, R)))
 
 run()
