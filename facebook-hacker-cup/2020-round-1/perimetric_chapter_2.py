@@ -22,7 +22,7 @@ def solve(L, H, W):
         if start > 0 and I[start - 1][1] >= l:
             start -= 1
         end = bisect.bisect(I, (l + w, math.inf))
-        left, right, overlap = l, l + w, 0
+        left, right = l, l + w
         P -= 2 * h * (end - start)
         for s, e in I[start:end]:
             left, right = min(s, left), max(e, right)

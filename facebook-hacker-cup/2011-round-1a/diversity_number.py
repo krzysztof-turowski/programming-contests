@@ -16,15 +16,15 @@ def solve(A):
                     continue
                 C = set()
                 for index in range(left + 1, right):
-                    if (A[index] not in C and
+                    if (A[index] not in C
                         and max(k + 1, A[left], A[right]) <= A[index]):
                         C.add(A[index])
                         D[index][right][k + 1] += (
                             D[left][right][k] * (A[index] - k))
                 C = set()
                 for index in range(right - 1, left, -1):
-                    if (A[index] not in C and
-                        max(k + 1, A[left] + 1, A[right]) <= A[index]):
+                    if (A[index] not in C
+                        and max(k + 1, A[left] + 1, A[right]) <= A[index]):
                         C.add(A[index])
                         D[left][index][k + 1] += (
                             D[left][right][k] * (A[index] - k))

@@ -7,7 +7,7 @@ def solve(R, O, Y, G, B, V):
         return 'VY' * Y
     if G == R and O == 0 and B == 0 and V == 0 and Y == 0:
         return 'GR' * R
-    if (O > 0 and O >= B) or (V > 0 and V >= Y) or (G > 0 and G >= R):
+    if O >= max(B, 1) or V >= max(Y, 1) or G >= max(R, 1):
         return 'IMPOSSIBLE'
     R, Y, B = R - G, Y - V, B - O
     if R > Y + B or Y > R + B or B > R + Y:
