@@ -2,6 +2,16 @@
 
 import sys
 
+MAX = 10 ** 9
+P = [
+    (0, 0), (-MAX // 2, -MAX // 2), (-MAX // 2, MAX // 2),
+    (MAX // 2, -MAX // 2), (MAX // 2, MAX // 2)
+]
+S = [
+    (-1, -1), (0, -1), (1, -1), (-1, 0), (0, 0),
+    (1, 0), (-1, 1), (0, 1), (1, 1)
+]
+
 def get_input(X, Y):
     print(X, Y)
     sys.stdout.flush()
@@ -17,11 +27,6 @@ def binary(low, high, point, test):
     return low, high
 
 def solve():
-    MAX = 10 ** 9
-    P = [
-        (0, 0), (-MAX // 2, -MAX // 2), (-MAX // 2, MAX // 2),
-        (MAX // 2, -MAX // 2), (MAX // 2, MAX // 2)
-    ]
     for x, y in P:
         value = get_input(x, y)
         if value == 'CENTER':
@@ -42,10 +47,6 @@ def solve():
     if y_high is None:
         return
     y_mid = (y_low + y_high) // 2
-    S = [
-        (-1, -1), (0, -1), (1, -1), (-1, 0), (0, 0),
-        (1, 0), (-1, 1), (0, 1), (1, 1)
-    ]
     for s in S:
         value = get_input(x_mid + s[0], y_mid + s[1])
         if value == 'CENTER':

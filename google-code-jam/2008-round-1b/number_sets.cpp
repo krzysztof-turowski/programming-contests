@@ -42,17 +42,11 @@ int solve(const llong &A, const llong &B, const llong &P) {
         primes[i * j] = false;
       }
       if (i >= P) {
-        // std::cout << "PRIME: " << i << std::endl;
         llong v = (A % i == 0) ? A : (A - (A % i) + i);
         for (int j = 1; v + i * j <= B; j++) {
-          // std::cout << "JOIN: " << v << " " << v + i * j << std::endl;
           Node::join(&V[v - A], &V[v + i * j - A]);
         }
         std::set<Node*> R;
-        // for (auto &v : V) {
-          // R.insert(v.find());
-        // }
-        // std::cout << "PRIMES: " << i << " " << R.size() << std::endl;
       }
     }
   }

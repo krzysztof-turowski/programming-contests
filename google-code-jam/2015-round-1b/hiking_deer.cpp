@@ -33,14 +33,12 @@ llong solve(std::vector<Hiker> &V) {
     for (int j = 0; j < V[i].H; j++) {
       Event e{(360 - V[i].D) * (V[i].M + j), 360 * (V[i].M + j), 0};
       Q.push(e);
-      // std::cout << "X: " << e.time << " " << e.cycle << " " << e.repeat << std::endl;
     }
     H += V[i].H;
   }
   int best = H, current = H;
   for (int i = 0; i < 2 * H; i++) {
     auto e = Q.top();
-    // std::cout << e.time << " " << e.repeat << " " << current << std::endl;
     Q.pop();
     if (e.repeat == 0) {
       current--, best = std::min(best, current);

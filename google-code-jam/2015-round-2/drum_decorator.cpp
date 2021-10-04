@@ -35,7 +35,6 @@ llong S2(
   }
   auto value = S.find(std::make_pair(rows, period));
   if (value != S.end()) {
-    // assert(value->second < MOD);
     return value->second;
   }
   llong out = S3(rows - 1, C, period, S);
@@ -77,15 +76,11 @@ llong S2(
     }
   }
   S[std::make_pair(rows, period)] = out % MOD;
-  // std::cout << out % MOD << " " << MOD << std::endl;
-    // assert(out % MOD < MOD);
   return out % MOD;
 }
 
 llong solve(const int &R, const int &C) {
   std::map<std::pair<int, int>, llong> S;
-  // std::cout << S3(R, C, 0, S) << std::endl;
-  // std::cout << S2(R, C, 0, S) << std::endl;
   return (S3(R, C, 0, S) + S2(R, C, 0, S)) % MOD;
 }
 
