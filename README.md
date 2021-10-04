@@ -65,3 +65,7 @@ Code from various programming contests: Google Code Jam, Facebook Hacker Cup, SP
 - 2020
   - Qualification Round: 418th place, 4/5 problems
   - Round 1: 1760th place, 1/4 problems
+- 2021
+  - Qualification Round: 1190th place, 4/5 problems
+  - Round 1: 766th place, 3/5 problems
+  - Round 2: 1660th place, 1/5 problems
