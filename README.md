@@ -37,6 +37,10 @@ Code from various programming contests: Google Code Jam, Facebook Hacker Cup, SP
   - Round 1A: 1534th place, 3/3 small, 2/5 large
   - Round 1B: 133rd place, 3/3 small, 3/3 large
   - Round 2: 3829th place, 1/4 small, 0/3 large
+- 2022
+  - Qualification Round: 171st place, 5/5 small, 3/3 large
+  - Round 1A: 1448th place, 2/3 small, 1/2 large
+  - Round 2: 1960th place, 2/5 small, 1/4 large
 
 ## Facebook Hacker Cup results
 
