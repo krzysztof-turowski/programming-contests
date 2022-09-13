@@ -13,7 +13,7 @@ def generate():
             BIN[(a, b)] = (BIN[(a - 1, b)] + BIN[(a - 1, b - 1)]) % MOD
     return BIN
 
-def solve(A, N, K):
+def solve(A, K):
     BIN = generate()
     return sum(a * BIN[(i - 1, K - 1)]
                for i, a in enumerate(sorted(A)[K - 1:], start = K)) % MOD
@@ -21,8 +21,8 @@ def solve(A, N, K):
 def run():
     T = int(input())
     for i in range(T):
-        N, K = (int(x) for x in input().split())
+        _, K = (int(x) for x in input().split())
         A = [int(x) for x in input().split()]
-        print('Case #{0}: {1}'.format(i + 1, solve(A, N, K)))
+        print('Case #{0}: {1}'.format(i + 1, solve(A, K)))
 
 run()

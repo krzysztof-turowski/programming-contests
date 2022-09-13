@@ -7,7 +7,7 @@ def generate(A, N, P):
     out, a, b = [0] * P, A[0], A[1]
     out[A[0]] += 1
     out[A[1]] += 1
-    for i in range(N - 2):
+    for _ in range(N - 2):
         c = (a * A[2] + b * A[3] + A[4]) % P
         a, b, out[c] = b, c, out[c] + 1
     return out

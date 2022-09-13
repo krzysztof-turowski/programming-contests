@@ -5,7 +5,7 @@ import itertools
 
 def solve(L, B, N, A):
     time, improvements = 0, []
-    for i, a in zip(range(N), itertools.cycle(A)):
+    for _, a in zip(range(N), itertools.cycle(A)):
         if time > B:
             improvements.append(a)
         elif time + 2 * a > B:

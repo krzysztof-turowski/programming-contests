@@ -24,7 +24,7 @@ def run():
     T = int(input())
     for i in range(T):
         R, C = (int(x) for x in input().split())
-        A = [[x for x in input()] for _ in range(R)]
+        A = [list(input()) for _ in range(R)]
         print('Case #{0}:\n{1}'.format(i + 1, solve(R, C, A)))
 
 run()
