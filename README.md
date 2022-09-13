@@ -73,3 +73,6 @@ Code from various programming contests: Google Code Jam, Facebook Hacker Cup, SP
   - Qualification Round: 1184th place, 4/5 problems
   - Round 1: 766th place, 3/5 problems
   - Round 2: 1660th place, 1/5 problems
+- 2022
+  - Qualification Round: 1044th place, 4/6 problems
+  - Round 1: did not compete
