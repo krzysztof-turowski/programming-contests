@@ -28,9 +28,9 @@ def sort_neighbors(G, P):
 
 def split_polygons(G):
     out = []
-    for v, _ in enumerate(G):
-        while len(G[v]) > 0:
-            u1, u2 = G[v][-1], v
+    for v, Gv in enumerate(G):
+        while len(Gv) > 0:
+            u1, u2 = Gv[-1], v
             out.append([u2])
             while u1 != v:
                 index = max(i for i, w in enumerate(G[u1]) if w == u2)
@@ -77,8 +77,8 @@ def solve(N, E):
 def check(E, out):
     for u, v in E:
         assert out[u] is None or out[u] != out[v]
-    for i, _ in enumerate(out):
-        assert out[i] is None or out[i] != out[(i + 1) % len(out)]
+    for i, v in enumerate(out):
+        assert v is None or v != out[(i + 1) % len(out)]
 
 def run():
     T = int(input())

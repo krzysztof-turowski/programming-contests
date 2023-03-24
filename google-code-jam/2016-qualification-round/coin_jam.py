@@ -20,7 +20,7 @@ def test_prime(value):
 def check(value, N):
     D = []
     for d in range(2, 11):
-        base_d = sum([int(v) * (d ** (N - 1 - i)) for i, v in enumerate(list(str(value)))])
+        base_d = sum(int(v) * (d ** (N - 1 - i)) for i, v in enumerate(list(str(value))))
         divisor = test_prime(base_d)
         if divisor is None:
             return False, None

@@ -4,7 +4,7 @@ def solve(A, B):
     if B[0] == 0 or B[-1] == 0:
         return "IMPOSSIBLE", ""
     out = []
-    while sum([abs(a - b) for (a, b) in zip(A, B)]) > 0:
+    while sum(abs(a - b) for a, b in zip(A, B)) > 0:
         row = ['.'] * len(A)
         LA, LB = A[0], B[0]
         for i in range(1, len(A) - 1):

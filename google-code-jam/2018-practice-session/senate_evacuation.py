@@ -26,7 +26,7 @@ def run():
         N = int(input())
         P = [(-int(value), chr(index + ord('A')))
              for (value, index) in zip(input().split(), range(N))]
-        S = sum([-value for (value, index) in P])
+        S = sum(-value for value, _ in P)
         out = solve(P, S, N)
         print("Case #{0}: {1}".format(t + 1, ' '.join(out)))
 

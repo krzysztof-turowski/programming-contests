@@ -6,7 +6,7 @@ import queue
 def find_first_after(C, D):
     S, W, T = C
     threshold = T + ((D - T) // (S + W)) * (S + W)
-    assert threshold <= D and threshold + (S + W) > D
+    assert D - (S + W) < threshold <= D
     return (D, threshold + S) if threshold + S > D else (threshold + S + W, D)
 
 def solve(N, M, C):

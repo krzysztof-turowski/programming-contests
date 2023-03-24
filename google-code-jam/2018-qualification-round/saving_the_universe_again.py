@@ -7,23 +7,23 @@ def find_last_move(Id):
     return 0
 
 def move_all_max(Id, index):
-    return evaluate([1 if i == index else x for (i, x) in zip(range(len(Id)), Id)])
+    return evaluate([1 if i == index else x for (i, x) in enumerate(Id)])
 
 def move_all_once(Id, index):
-    return evaluate([x - 1 if i == index else x for (i, x) in zip(range(len(Id)), Id)])
+    return evaluate([x - 1 if i == index else x for (i, x) in enumerate(Id)])
 
 def move_one(Id, index):
     return evaluate([x - 1 if i == index else (x + 1 if i == index + 1 else x)
-                     for (i, x) in zip(range(len(Id)), Id)])
+                     for i, x in enumerate(Id)])
 
 def evaluate(Id):
-    return sum([2 ** (sum(Id[:(index + 1)]) - index - 1) for index in range(len(Id))])
+    return sum(2 ** (sum(Id[:(index + 1)]) - index - 1) for index in range(len(Id)))
 
 def solve(P, D):
-    I = [index for (index, value) in zip(range(len(P)), P) if value == 'S']
+    I = [index for index, value in enumerate(P) if value == 'S']
     if not I:
         return 0
-    Id = [I[0] + 1] + [second - first for (first, second) in zip(I, I[1:])]
+    Id = [I[0] + 1] + [second - first for first, second in zip(I, I[1:])]
     S = 0
     if evaluate([1] * len(Id)) > D:
         return "IMPOSSIBLE"

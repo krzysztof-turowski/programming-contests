@@ -20,19 +20,19 @@ def area(P):
 
 def check(C, Q, A):
     if abs(area(Q) - A) > 10e-7:
-        raise Exception(A)
+        raise Warning(A)
     R = [[sum(C[i][j] * X[i] for i in range(len(X))) for j in range(len(C))]
          for X in itertools.product([-1, 1], repeat = 3)]
     if abs(area(R) - A) > 10e-7:
-        raise Exception(A)
+        raise Warning(A)
     for c in C:
         if abs(math.sqrt(sum(x ** 2 for x in c)) - 0.5) > 10e-7:
-            raise Exception
+            raise Warning(c)
     for c1, c2 in itertools.combinations(C, 2):
         numerator = sum(x * y for (x, y) in zip(c1, c2))
         denominator = math.sqrt(sum(x ** 2 for x in c1)) * math.sqrt(sum(x ** 2 for x in c2))
         if abs(math.acos(numerator / denominator) - math.pi / 2) > 10e-7:
-            raise Exception(A)
+            raise Warning(c1, c2)
 
 def binary_search(P, A, high, low = 0):
     while abs(A - area(rotate_X(P, low))) > 10e-9 or abs(A - area(rotate_X(P, high))) > 10e-9:

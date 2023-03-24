@@ -36,7 +36,7 @@ def solve(A, Q):
             check.append({'TTT': ttt, 'TTF': ttf, 'TFT': tft, 'FTT': ftt})
     total, T = 0, {k: 0 for k in D}
     for C in check:
-        value = math.prod(binomial(D[k], C[k]))
+        value = math.prod(binomial(D[k], C[k]) for k in D)
         total += value
         T = {k: v + value * C[k] for k, v in T.items()}
     out = ''

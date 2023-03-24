@@ -16,7 +16,7 @@ def solve(X):
     for p, h in reversed(list(X.items())):
         if p - h in reverse:
             best = max(best, P[p] + Q[reverse[p - h]])
-    best = max(best, max(Q.values()), max(P.values()))
+    best = max(best, *Q.values(), *P.values())
     return best
 
 def run():
