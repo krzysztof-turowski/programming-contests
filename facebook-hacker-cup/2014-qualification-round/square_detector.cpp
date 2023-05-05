@@ -1,8 +1,3 @@
-#ifdef _MSC_VER
-  #define _CRT_SECURE_NO_WARNINGS
-  #define _USE_MATH_DEFINES
-#endif
-
 #include <algorithm>
 #include <cassert>
 #include <cstdio>
@@ -18,65 +13,47 @@
 #include <set>
 #include <vector>
 
-typedef int64_t llong;
-typedef long double ldouble;
-typedef std::pair<int, int> pint;
-typedef std::pair<double, double> pdouble;
-typedef std::vector<int> vint;
-typedef vint::iterator vit;
-typedef std::vector<double> vdouble;
-typedef vdouble::iterator vdit;
-typedef std::vector<ldouble> vldouble;
-typedef std::vector<std::string> vstring;
-typedef std::vector<llong> vllong;
-typedef std::vector<vint> graph;
-
 #define FOR(v, p, k) for (int v = p; v <= k; ++v)
 #define FORD(v, p, k) for (int v = p; v >= k; --v)
 #define REP(i, n) for (int i = 0; i < (n); ++i)
-#define VAR(v, i) auto v = (i)
-#define FOREACH(i, c) for (VAR(i, (c).begin()); i != (c).end(); ++i)
-#define SIZE(x) static_cast<int>(x.size())
-#define ALL(c) c.begin(), c.end()
 
-#define ADD_EDGE(g, u, v) g[u].push_back(v), g[v].push_back(u)
-
-#define ST first
-#define ND second
-#define INF 1000000000
-#define INFL 1000000000000000000LL
-#define MOD 1000000007L
-#define EPS 1e-5
-
-pint find_start(const vstring &S, const int &N) {
-  REP(i, N)
-    REP(j, N)
-      if (S[i][j] == '#')
+auto find_start(const std::vector<std::string> &S, const int &N) {
+  REP(i, N) {
+    REP(j, N) {
+      if (S[i][j] == '#') {
         return std::make_pair(i, j);
+      }
+    }
+  }
   return std::make_pair(-1, -1);
 }
 
-pint find_end(const vstring &S, const int &N) {
-  FORD(i, N - 1, 0)
-    FORD(j, N - 1, 0)
-      if (S[i][j] == '#')
+auto find_end(const std::vector<std::string> &S, const int &N) {
+  FORD(i, N - 1, 0) {
+    FORD(j, N - 1, 0) {
+      if (S[i][j] == '#') {
         return std::make_pair(i, j);
+      }
+    }
+  }
   return std::make_pair(-1, -1);
 }
 
-bool solve(const vstring &S, const int &N) {
-  pint start = find_start(S, N), end = find_end(S, N);
-  if (start.ST > end.ST || start.ND > end.ND
-      || start.ST - end.ST != start.ND - end.ND)
+bool solve(const std::vector<std::string> &S, const int &N) {
+  auto start = find_start(S, N), end = find_end(S, N);
+  if (start.first > end.first || start.second > end.second
+      || start.first - end.first != start.second - end.second) {
     return false;
-  REP(i, N)
-    REP(j, N)
-      if (i < start.ST || i > end.ST || j < start.ND || j > end.ND) {
-        if (S[i][j] == '#') {
+  }
+  REP(i, N) {
+    REP(j, N) {
+      if (i < start.first || i > end.first || j < start.second || j > end.second) {
+        if (S[i][j] == '#' || S[i][j] == '.') {
           return false;
-        } else if (S[i][j] == '.') {
-            return false;
         }
+      }
+    }
+  }
   return true;
 }
 
@@ -86,10 +63,10 @@ int main() {
   REP(t, T) {
     int N;
     std::cin >> N;
-
-    vstring S(N);
-    REP(i, N)
+    std::vector<std::string> S(N);
+    REP(i, N) {
       std::cin >> S[i];
+    }
     printf("Case #%d: %s\n", t + 1, solve(S, N) ? "YES" : "NO");
   }
 
