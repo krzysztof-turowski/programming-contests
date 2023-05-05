@@ -1,8 +1,3 @@
-#ifdef _MSC_VER
-  #define _CRT_SECURE_NO_WARNINGS
-  #define _USE_MATH_DEFINES
-#endif
-
 #include <algorithm>
 #include <cassert>
 #include <cstdio>
@@ -19,41 +14,21 @@
 #include <vector>
 
 typedef int64_t llong;
-typedef long double ldouble;
-typedef std::pair<int, int> pint;
-typedef std::pair<double, double> pdouble;
-typedef std::vector<int> vint;
-typedef vint::iterator vit;
-typedef std::vector<double> vdouble;
-typedef vdouble::iterator vdit;
-typedef std::vector<ldouble> vldouble;
-typedef std::vector<std::string> vstring;
-typedef std::vector<llong> vllong;
-typedef std::vector<vint> graph;
 
 #define FOR(v, p, k) for (int v = p; v <= k; ++v)
 #define FORD(v, p, k) for (int v = p; v >= k; --v)
 #define REP(i, n) for (int i = 0; i < (n); ++i)
 #define VAR(v, i) auto v = (i)
 #define FOREACH(i, c) for (VAR(i, (c).begin()); i != (c).end(); ++i)
-#define SIZE(x) static_cast<int>(x.size())
-#define ALL(c) c.begin(), c.end()
 
-#define ADD_EDGE(g, u, v) g[u].push_back(v), g[v].push_back(u)
-
-#define ST first
-#define ND second
-#define INF 1000000000
 #define INFL 1000000000000000000LL
-#define MOD 1000000007L
-#define EPS 1e-5
 
 class PrePostFix {
  public:
   std::string prefix, first_postfix, second_postfix;
 
   PrePostFix(const std::string &a, const std::string &b) {
-    auto positions = mismatch(ALL(a), b.begin());
+    auto positions = mismatch(a.begin(), a.end(), b.begin());
 
   prefix = a.substr(0, positions.first - a.begin());
   first_postfix = a.substr(positions.first - a.begin(), a.end() - positions.first);
@@ -66,12 +41,13 @@ class PrefixNode {
   std::string prefix;
   bool used;
   std::vector<PrefixNode*> children;
-  vllong subwords;
+  std::vector<llong> subwords;
 
   PrefixNode(const std::string &word, bool used) : prefix(word), used(used) { }
   ~PrefixNode() {
-    REP(i, SIZE(children))
+    REP(i, children.size()) {
       delete children[i];
+    }
   }
 };
 
@@ -114,7 +90,7 @@ class PrefixTree {
         // Find if there is a child with longer prefix matching the word
         char c = data.first_postfix[0];
         int index = -1;
-        REP(i, SIZE(current->children))
+        REP(i, current->children.size())
           if (current->children[i]->prefix[0] == c) {
             index = i;
             break;
@@ -164,48 +140,46 @@ class PrefixTree {
  private:
   void compute(PrefixNode *current) {
     current->subwords.push_back(0L);
-    if (current->used)
+    if (current->used) {
       current->subwords.push_back(0L);
-
+    }
     FOREACH(e, current->children) {
       compute(*e);
       join(current->subwords, (*e)->subwords);
     }
-
-    FOR(i, 1, SIZE(current->subwords) - 1)
+    FOR(i, 1, current->subwords.size() - 1) {
       current->subwords[i] += 2 * current->prefix.length();
+    }
   }
 
-  void join(vllong &first, vllong &second) {
-    vllong result(first.size() + second.size() - 1, INFL);
-    REP(i, SIZE(first))
-      REP(j, SIZE(second))
+  void join(std::vector<llong> &first, std::vector<llong> &second) {
+    std::vector<llong> result(first.size() + second.size() - 1, INFL);
+    REP(i, first.size()) {
+      REP(j, second.size()) {
         result[i + j] = std::min(result[i + j], first[i] + second[j]);
-    first.assign(ALL(result));
+      }
+    }
+    first.assign(result.begin(), result.end());
   }
 };
 
 llong solve() {
   int N, K;
   std::cin >> N >> K;
-
   PrefixTree T;
   REP(i, N) {
     std::string word;
     std::cin >> word;
     T.insert(word);
   }
-
   return T.compute(K) + K;
 }
 
 int main() {
   int T;
-
   std::cin >> T;
   REP(t, T)  {
     printf("Case #%d: %lld\n", t + 1, solve());
   }
-
   return 0;
 }
