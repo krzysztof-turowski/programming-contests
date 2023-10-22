@@ -6,7 +6,7 @@
 #include <vector>
 #include <cmath>
 
-typedef int64_t llong;
+using llong = int64_t;
 
 #define FOR(v, p, k) for (int v = p; v <= k; ++v)
 #define FORD(v, p, k) for (int v = p; v >= k; --v)

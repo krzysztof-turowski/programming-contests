@@ -13,6 +13,7 @@ struct candidate {
 
   candidate& operator= (const candidate &other) {
     this->M = other.M, this->N = other.N, this->start = other.start, this->xstart = other.xstart;
+    return *this;
   }
 };
 

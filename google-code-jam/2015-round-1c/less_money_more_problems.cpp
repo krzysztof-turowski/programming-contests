@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-typedef int64_t llong;
+using llong = int64_t;
 
 int solve(
     const llong &C, const llong &V, std::priority_queue<llong, std::vector<llong>,

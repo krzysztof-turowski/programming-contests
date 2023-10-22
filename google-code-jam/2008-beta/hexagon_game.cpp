@@ -7,25 +7,14 @@
 #include <string>
 #include <vector>
 
-typedef int64_t llong;
-typedef long double ldouble;
-typedef std::pair<int, int> pint;
-typedef std::pair<double, double> pdouble;
-typedef std::vector<int> vint;
-typedef std::vector<double> vdouble;
+using pint = std::pair<int, int>;
+using vint = std::vector<int>;
 
 #define FOR(v, p, k) for (int v = p; v <= k; ++v)
 #define FORD(v, p, k) for (int v = p; v >= k; --v)
 #define REP(i, n) for (int i = 0; i < (n); ++i)
-#define VAR(v, i) auto v = (i)
-#define FOREACH(i, c) for (VAR(i, (c).begin()); i != (c).end(); ++i)
-#define SIZE(x) static_cast<int>(x.size())
-#define ALL(c) c.begin(), c.end()
 
-#define ST first
-#define ND second
-#define INF 1000000000LL
-#define EPS 1e-5
+const int INF = 1000000000;
 
 int row_length(const int &i, const int &S) {
   return (S + 1) / 2 + (i > S / 2 ? S - 1 - i : i);
@@ -38,8 +27,9 @@ int hex_distance(const pint &i, const pint &j) {
 
 vint Hungarian(const std::vector<vint> &G, const int &N) {
   vint match_x(N, -1), match_y(N, -1), index_x(N), index_y(N, 0), parent(N, -1);
-  REP(i, N)
+  REP(i, N) {
     index_x[i] = *max_element(G[i].begin(), G[i].end());
+  }
   REP(k, N) {
     std::vector<bool> used_x(N, false), used_y(N, false);
     vint slack(N, -1);
@@ -49,6 +39,7 @@ vint Hungarian(const std::vector<vint> &G, const int &N) {
         Q.push(i);
       }
     }
+    int v = -1;
     while (v == -1) {
       while (!Q.empty()) {
         int i = Q.front();
@@ -150,18 +141,21 @@ int main() {
     }
 
     int out = INF;
-    REP(i, S)
+    REP(i, S) {
       Y.push_back(std::make_pair(i, i));
+    }
     out = std::min(out, compute(S, X, Y, C));
     Y.clear();
 
-    REP(i, S)
+    REP(i, S) {
       Y.push_back(std::make_pair(i, (S - 1) / 2));
+    }
     out = std::min(out, compute(S, X, Y, C));
     Y.clear();
 
-    REP(i, S)
+    REP(i, S) {
       Y.push_back(std::make_pair((S - 1) / 2, i));
+    }
     out = std::min(out, compute(S, X, Y, C));
     Y.clear();
 

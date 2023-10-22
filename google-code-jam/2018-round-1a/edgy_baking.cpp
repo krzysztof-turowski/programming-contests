@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-typedef long double ldouble;
+using ldouble = long double;
 
 ldouble solve(std::vector<std::pair<ldouble, ldouble>> &S, const int &P) {
   ldouble value = P, start = 0;

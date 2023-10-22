@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-int get_preorder(
+void get_preorder(
     const std::vector<std::pair<int, int>> &S, std::vector<int> &X, const int &index) {
   X.push_back(index);
   if (S[index].first != -1) {
@@ -19,7 +19,7 @@ int get_preorder(
   }
 }
 
-int get_postorder(
+void get_postorder(
     const std::vector<std::pair<int, int>> &S, std::vector<int> &X, const int &index) {
   if (S[index].first != -1) {
     get_postorder(S, X, S[index].first);

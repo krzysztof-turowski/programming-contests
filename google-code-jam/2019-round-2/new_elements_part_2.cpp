@@ -8,10 +8,10 @@
 #include <string>
 #include <vector>
 
-typedef int64_t llong;
-typedef std::pair<llong, llong> fraction;
+using llong = int64_t;
+using fraction = std::pair<llong, llong>;
 
-const llong INF = 1e9L + 1;
+const llong INF = 1000000001LL;
 
 bool heavier(const fraction &A, const fraction &B) {
   return A.first >= B.first && A.second >= B.second;

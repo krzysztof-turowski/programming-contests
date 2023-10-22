@@ -1,7 +1,3 @@
-#ifdef _MSC_VER
-  #define _CRT_SECURE_NO_WARNINGS
-#endif
-
 #include <cstdio>
 #include <iostream>
 #include <algorithm>
@@ -12,33 +8,14 @@
 #include <cassert>
 #include <queue>
 
-typedef int64_t llong;
-typedef long double ldouble;
-typedef std::pair<int, int> pint;
-typedef std::pair<double, double> pdouble;
-typedef std::vector<int> vint;
-typedef std::vector<double> vdouble;
-typedef std::vector<ldouble> vldouble;
-typedef std::vector<std::string> vstring;
-typedef std::vector<llong> vllong;
-typedef std::vector<vint> graph;
+using llong = int64_t;
+using ldouble = long double;
 
 #define FOR(v, p, k) for (int v = p; v <= k; ++v)
 #define FORD(v, p, k) for (int v = p; v >= k; --v)
 #define REP(i, n) for (int i = 0; i < (n); ++i)
-#define VAR(v, i) auto v = (i)
-#define FOREACH(i, c) for (VAR(i, (c).begin()); i != (c).end(); ++i)
-#define SIZE(x) static_cast<int>(x.size())
-#define ALL(c) c.begin(), c.end()
 
-#define ADD_EDGE(g, u, v) g[u].push_back(v), g[v].push_back(u)
-
-#define ST first
-#define ND second
-#define INF 1000000000LL
-#define INFL 10000000000000LL
-#define EPS 1e-5
-#define MAX 100000
+const llong INFL = 1000000000000000000LL;
 
 struct Barber {
   int index;
@@ -53,9 +30,9 @@ struct Barber {
 
 llong limit(const std::vector<Barber> &V, const llong &time) {
   llong out = 0;
-  REP(i, SIZE(V))
-    out += (time + V[i].speed  - 1) / V[i].speed;
-
+  for (const auto &v : V) {
+    out += (time + v.speed  - 1) / v.speed;
+  }
   return out;
 }
 
@@ -79,40 +56,42 @@ int solve() {
 
   std::vector<Barber> V;
   int speed;
-  REP(i, B)
+  REP(i, B) {
     std::cin >> speed, V.push_back(Barber(i + 1, speed));
-
+  }
   llong time = INFL;
-  REP(i, B)
+  REP(i, B) {
     time = std::min(time, V[i].speed);
+  }
   time = bisection(V, 0, time * N, N);
 
   llong served = limit(V, time);
   N -= served;
   assert(N > 0);
 
-  REP(i, B)
+  REP(i, B) {
     V[i].time = time % V[i].speed;
-  std::priority_queue<Barber, std::vector<Barber>> Q;
-  REP(i, B)
+  }
+  std::priority_queue<Barber> Q;
+  REP(i, B) {
     Q.push(V[i]);
+  }
 
   REP(i, N - 1) {
-    Barber next = Q.top();
+    auto next = Q.top();
     Q.pop();
 
     next.time += next.speed;
     Q.push(next);
   }
-
   return Q.top().index;
 }
 
 int main() {
   int T;
   std::cin >> T;
-  REP(t, T)
+  REP(t, T) {
     printf("Case #%d: %d\n", t + 1, solve());
-
+  }
   return 0;
 }

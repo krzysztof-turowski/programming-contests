@@ -13,8 +13,8 @@
 #include <set>
 #include <vector>
 
-typedef int64_t llong;
-typedef std::pair<int, int> pint;
+using llong = int64_t;
+using pint = std::pair<int, int>;
 
 #define FOR(v, p, k) for (int v = p; v <= k; ++v)
 #define FORD(v, p, k) for (int v = p; v >= k; --v)

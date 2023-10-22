@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-int MAX = 8000;
+const int MAX = 8000;
 std::vector<std::vector<double>> lose_B, lose_W;
 
 void precompute(int N) {

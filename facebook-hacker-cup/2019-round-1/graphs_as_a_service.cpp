@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-typedef int64_t llong;
+using llong = int64_t;
 
 std::string solve(const std::vector<std::vector<llong>> &G) {
   int N = G.size();

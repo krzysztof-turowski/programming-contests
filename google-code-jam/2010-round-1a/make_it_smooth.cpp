@@ -8,8 +8,8 @@
 #include <string>
 #include <vector>
 
-#define MAX 256
-#define INF 1000000000
+const int MAX = 256;
+const int INF = 1000000000;
 
 int solve(std::vector<int> &A, int &D, int &I, int &M, int &N) {
   std::vector<int> previous(MAX, 0);
@@ -30,7 +30,7 @@ int solve(std::vector<int> &A, int &D, int &I, int &M, int &N) {
     } else {
       for (int i = 0; i < MAX; i++) {
         cost[i] = std::min(
-          cost[i], previous[i] + static_cast<int>(fabs(A[k] - i));
+          cost[i], previous[i] + static_cast<int>(fabs(A[k] - i)));
       }
     }
     std::swap(previous, cost);

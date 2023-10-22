@@ -7,30 +7,12 @@
 #include <cmath>
 #include <queue>
 
-typedef int64_t llong;
-typedef long double ldouble;
-typedef std::pair<int, int> pint;
-typedef std::pair<double, double> pdouble;
-typedef std::vector<int> vint;
-typedef std::vector<double> vdouble;
-typedef std::vector<llong> vllong;
-typedef std::vector<pint> vpint;
-typedef std::vector<pdouble> vpdouble;
+using llong = int64_t;
+using ldouble = long double;
 
 #define FOR(v, p, k) for (int v = p; v <= k; ++v)
 #define FORD(v, p, k) for (int v = p; v >= k; --v)
 #define REP(i, n) for (int i = 0; i < (n); ++i)
-#define VAR(v, i) auto v = (i)
-#define FOREACH(i, c) for (VAR(i, (c).begin()); i != (c).end(); ++i)
-#define SIZE(x) static_cast<int>(x.size())
-#define ALL(c) c.begin(), c.end()
-#define PART(c, k) c.begin(), c.begin() + (k)
-
-#define ST first
-#define ND second
-#define INF 1000000000LL
-#define INFL 1000000000000000000LL
-#define EPS 1e-5
 
 struct point {
   int index;
@@ -58,9 +40,10 @@ int main() {
     std::cin >> N >> W >> L;
 
     std::vector<point> P(N);
-    REP(i, N)
+    REP(i, N) {
       P[i].index = i, std::cin >> P[i].r;
-    std::sort(ALL(P), sort_by_radius);
+    }
+    std::sort(P.begin(), P.end(), sort_by_radius);
 
     REP(i, N) {
       bool check;
@@ -68,18 +51,20 @@ int main() {
         check = false;
         P[i].x = W * static_cast<double>(rand_r(NULL)) / RAND_MAX;
         P[i].y = L * static_cast<double>(rand_r(NULL)) / RAND_MAX;
-        REP(j, i)
+        REP(j, i) {
           if (point_distance(P[i], P[j]) < 0) {
             check = true;
             break;
           }
+        }
       } while (check);
     }
 
-    std::sort(ALL(P), sort_by_index);
+    std::sort(P.begin(), P.end(), sort_by_index);
     printf("Case #%d: ", t + 1);
-    FOREACH(it, P)
-      printf("%.2lf %.2lf ", it->x, it->y);
+    for (auto it : P) {
+      printf("%.2lf %.2lf ", it.x, it.y);
+    }
     puts("");
   }
 

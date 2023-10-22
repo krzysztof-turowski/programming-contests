@@ -7,9 +7,9 @@
 #include <string>
 #include <vector>
 
-#define llong int64
+using llong = int64_t;
 
-llong MOD = 1000000007;
+const llong MOD = 1000000007;
 
 std::vector<int> read_and_generate(int K, int N, int M) {
   std::vector<int> out(K);

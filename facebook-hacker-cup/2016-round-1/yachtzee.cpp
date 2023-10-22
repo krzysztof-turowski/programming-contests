@@ -1,8 +1,3 @@
-#ifdef _MSC_VER
-  #define _CRT_SECURE_NO_WARNINGS
-  #define _USE_MATH_DEFINES
-#endif
-
 #include <algorithm>
 #include <cassert>
 #include <cstdio>
@@ -18,45 +13,25 @@
 #include <set>
 #include <vector>
 
-typedef int64_t llong;
-typedef long double ldouble;
-typedef std::pair<int, int> pint;
-typedef std::pair<double, double> pdouble;
-typedef std::vector<int> vint;
-typedef vint::iterator vit;
-typedef std::vector<double> vdouble;
-typedef vdouble::iterator vdit;
-typedef std::vector<ldouble> vldouble;
-typedef std::vector<std::string> vstring;
-typedef std::vector<llong> vllong;
-typedef std::vector<vint> graph;
+using llong = int64_t;
+using ldouble = long double;
+using vllong = std::vector<llong>;
 
 #define FOR(v, p, k) for (int v = p; v <= k; ++v)
 #define FORD(v, p, k) for (int v = p; v >= k; --v)
 #define REP(i, n) for (int i = 0; i < (n); ++i)
-#define VAR(v, i) auto v = (i)
-#define FOREACH(i, c) for (VAR(i, (c).begin()); i != (c).end(); ++i)
 #define SIZE(x) static_cast<int>(x.size())
-#define ALL(c) c.begin(), c.end()
-
-#define ADD_EDGE(g, u, v) g[u].push_back(v), g[v].push_back(u)
-
-#define ST first
-#define ND second
-#define INF 1000000000
-#define INFL 1000000000000000000LL
-#define MOD 1000000007L
-#define EPS 1e-5
 
 ldouble get_remainder(llong low, llong high, vllong C) {
-  if (low == high)
+  if (low == high) {
     return 0;
-
-  ldouble remainder = (ldouble)(high * high - low * low) / 2;
-  REP(i, SIZE(C))
+  }
+  ldouble remainder = static_cast<ldouble>(high * high - low * low) / 2;
+  REP(i, SIZE(C)) {
     if (C[i] > high) {
       return remainder;
-    } else if (C[i] <= low) {
+    }
+    if (C[i] <= low) {
       remainder -= (high - low) * C[i];
       low -= C[i];
       high -= C[i];
@@ -65,7 +40,7 @@ ldouble get_remainder(llong low, llong high, vllong C) {
       low = 0;
       high -= C[i];
     }
-
+  }
   return remainder;
 }
 
@@ -75,9 +50,9 @@ ldouble solve() {
   std::cin >> N >> A >> B;
 
   vllong C(N);
-  REP(i, N)
+  REP(i, N) {
     std::cin >> C[i], C_sum += C[i];
-
+  }
   ldouble remainder = 0;
   if (A / C_sum == B / C_sum) {
     remainder = get_remainder(A % C_sum, B % C_sum, C);
@@ -93,8 +68,8 @@ ldouble solve() {
 int main() {
   int T;
   std::cin >> T;
-  REP(t, T)
+  REP(t, T) {
     printf("Case #%d: %.9Lf\n", t + 1, solve());
-
+  }
   return 0;
 }

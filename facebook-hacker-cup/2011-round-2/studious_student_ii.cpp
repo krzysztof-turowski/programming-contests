@@ -9,9 +9,11 @@
 #include <unordered_map>
 #include <vector>
 
-typedef int64_t llong;
+#define FOR(v, p, k) for (int v = p; v <= k; ++v)
 
-int MAX = 64, MOD = 1000000007;
+using llong = int64_t;
+
+const int MAX = 64, MOD = 1000000007;
 
 std::vector<int> F(MAX), invF(MAX), D(1 << 21);
 

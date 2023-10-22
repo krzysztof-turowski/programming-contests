@@ -10,8 +10,8 @@
 #include <unordered_map>
 #include <vector>
 
-typedef std::vector<int> vint;
-typedef std::vector<vint> graph;
+using vint = std::vector<int>;
+using graph = std::vector<vint>;
 
 #define REP(i, n) for (int i = 0; i < (n); ++i)
 #define ADD_EDGE(g, u, v) g[u].push_back(v), g[v].push_back(u)

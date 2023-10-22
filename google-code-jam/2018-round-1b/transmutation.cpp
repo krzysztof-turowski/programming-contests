@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-typedef int64_t llong;
+using llong = int64_t;
 
 int find_negative(const std::vector<llong> &G) {
   for (int i = 0; i < G.size(); i++) {

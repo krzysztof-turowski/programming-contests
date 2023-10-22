@@ -10,9 +10,9 @@
 #include <unordered_map>
 #include <vector>
 
-typedef int64_t llong;
+using llong = int64_t;
 
-int MAX = 20, MOD = 1000000007, SIZE = 800001;
+const int MAX = 20, MOD = 1000000007, SIZE = 800001;
 
 struct Node {
   std::list<Node*> neighbors;
@@ -67,7 +67,7 @@ int solve(std::list<std::tuple<int, int, int, int>> &E) {
   for (int weight = 1; weight <= MAX; weight++) {
     std::vector<Node*> G(N);
     for (int i = 0; i < N; i++) {
-      G[i] = new Node(i);
+      G[i] = new Node();
     }
     for (auto [u, v, w, _] : E) {
       if (w >= weight) {

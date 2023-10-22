@@ -9,31 +9,15 @@
 #include <stack>
 #include <map>
 
-typedef int64_t llong;
-typedef long double ldouble;
-typedef std::pair<int, int> pint;
-typedef std::pair<llong, llong> pllong;
-typedef std::pair<double, double> pdouble;
-typedef std::pair<ldouble, ldouble> pldouble;
-typedef std::vector<int> vint;
-typedef std::vector<double> vdouble;
-typedef std::vector<std::string> vstring;
+using llong = int64_t;
+using ldouble = long double;
+using pllong = std::pair<llong, llong>;
 
 #define FOR(v, p, k) for (int v = p; v <= k; ++v)
 #define FORD(v, p, k) for (int v = p; v >= k; --v)
 #define REP(i, n) for (int i = 0; i < (n); ++i)
-#define VAR(v, i) auto v = (i)
-#define FOREACH(i, c) for (VAR(i, (c).begin()); i != (c).end(); ++i)
-#define SIZE(x) static_cast<int>(x.size())
-#define ALL(c) c.begin(), c.end()
-#define PART(c, k) c.begin(), c.begin() + (k)
 
-#define ST first
-#define ND second
-#define INF 1000000000LL
-#define INFL 1000000000000000000LL
-#define EPS 1e-5
-#define MAXVAL 1000002013
+const llong MAXVAL = 1000002013LL;
 
 llong calculate(const int &start, const int &finish, const int &N) {
   llong k = finish - start;
@@ -54,25 +38,23 @@ int main() {
       int s, f, p;
       std::cin >> s >> f >> p;
       gain += ((calculate(s, f, N) % MAXVAL) * p) % MAXVAL, gain %= MAXVAL;
-
       stations[s] += p, stations[f] -= p;
     }
 
-    FOREACH(it, stations) {
-      if (it->second > 0) {
-        current.push(std::make_pair(it->first, it->second));
+    for (auto [k, v] : stations) {
+      if (v > 0) {
+        current.push(std::make_pair(k, v));
         continue;
       }
-
-      llong out = -it->second;
+      llong out = -v;
       while (out) {
-        pllong &p = current.top();
+        auto &p = current.top();
         llong people = std::min(out, p.second);
-        loss += ((calculate(p.first, it->first, N) % MAXVAL) * people) % MAXVAL, loss %= MAXVAL;
-
+        loss += ((calculate(p.first, k, N) % MAXVAL) * people) % MAXVAL, loss %= MAXVAL;
         p.second -= people, out -= people;
-        if (p.second == 0)
+        if (p.second == 0) {
           current.pop();
+        }
       }
     }
     printf("Case #%d: %lld\n", t + 1, gain >= loss ? gain - loss : gain + MAXVAL - loss);

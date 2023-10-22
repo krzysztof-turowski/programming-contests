@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-typedef int64_t llong;
+using llong = int64_t;
 
 int solve(const llong &X) {
   const llong MAX_FIRST = sqrt(X / 2);

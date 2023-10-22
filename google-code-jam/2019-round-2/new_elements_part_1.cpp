@@ -8,8 +8,8 @@
 #include <string>
 #include <vector>
 
-typedef int64_t llong;
-typedef long double ldouble;
+using llong = int64_t;
+using ldouble = long double;
 
 bool both_ways(const std::pair<llong, llong> &A, const std::pair<llong, llong> &B) {
   if (A.first >= B.first && A.second >= B.second) {

@@ -7,66 +7,47 @@
 #include <cmath>
 #include <map>
 
-typedef int64_t llong;
-typedef long double ldouble;
-typedef std::pair<int, int> pint;
-typedef std::pair<double, double> pdouble;
-typedef std::vector<int> vint;
-typedef vint::iterator vit;
-typedef std::vector<pint> vpint;
-typedef std::vector<double> vdouble;
-typedef vdouble::iterator vdit;
-typedef std::vector<ldouble> vldouble;
-typedef std::vector<std::string> vstring;
-typedef std::vector<llong> vllong;
-typedef std::map<pint, vpint> graph;
+using llong = int64_t;
+using ldouble = long double;
+using pint = std::pair<int, int>;
+using vpint = std::vector<pint>;
 
 #define FOR(v, p, k) for (int v = p; v <= k; ++v)
 #define FORD(v, p, k) for (int v = p; v >= k; --v)
 #define REP(i, n) for (int i = 0; i < (n); ++i)
-#define VAR(v, i) auto v = (i)
-#define FOREACH(i, c) for (VAR(i, (c).begin()); i != (c).end(); ++i)
 #define SIZE(x) static_cast<int>(x.size())
-#define ALL(c) c.begin(), c.end()
-
-#define X first
-#define Y second
-#define INF 1000000000LL
-#define INFL 1000000000000000000LL
-#define EPS 1e-5
 
 int is_edge(const int &S, const pint &p) {
-  if (p.X == 0 && p.Y == 0 )
+  if (p.first == 0 && p.second == 0)
     return 12;
-  if (p.X == 0 && p.Y == S - 1)
+  if (p.first == 0 && p.second == S - 1)
     return 11;
-  if (p.X == S - 1 && p.Y == 0)
+  if (p.first == S - 1 && p.second == 0)
     return 10;
-  if (p.X == S - 1 && p.Y == 2 * S - 2)
+  if (p.first == S - 1 && p.second == 2 * S - 2)
     return 9;
-  if (p.X == 2 * S - 2 && p.Y == S - 1)
+  if (p.first == 2 * S - 2 && p.second == S - 1)
     return 8;
-  if (p.X == 2 * S - 2 && p.Y == 2 * S - 2)
+  if (p.first == 2 * S - 2 && p.second == 2 * S - 2)
     return 7;
-  if (p.X == 0)
+  if (p.first == 0)
     return 6;
-  if (p.Y - p.X == S - 1)
+  if (p.second - p.first == S - 1)
     return 5;
-  if (p.Y == 2 * S - 2)
+  if (p.second == 2 * S - 2)
     return 4;
-  if (p.X == 2 * S - 2)
+  if (p.first == 2 * S - 2)
     return 3;
-  if (p.X - p.Y == S - 1)
+  if (p.first - p.second == S - 1)
     return 2;
-  if (p.Y == 0)
+  if (p.second == 0)
     return 1;
-
   return 0;
 }
 
 bool in_board(const int &S, const pint &p) {
-  return std::min(p.X, p.Y) >= 0 && std::max(p.X, p.Y) <= 2 * S - 2
-      && (p.X > p.Y ? p.X - p.Y : p.Y - p.X) <= S - 1;
+  return std::min(p.first, p.second) >= 0 && std::max(p.first, p.second) <= 2 * S - 2
+      && (p.first > p.second ? p.first - p.second : p.second - p.first) <= S - 1;
 }
 
 struct data {
@@ -78,14 +59,14 @@ struct data {
 
 pint find(std::map<pint, data> &G, const pint &p) {
   pint &q = G.find(p)->second.parent;
-  if (p.X == q.X && p.Y == q.Y)
+  if (p.first == q.first && p.second == q.second)
     return p;
   return q = find(G, q);
 }
 
 bool join(std::map<pint, data> &G, const pint &p, const pint &q) {
   pint x = find(G, p), y = find(G, q);
-  if (x.X == y.X && x.Y == y.Y)
+  if (x.first == y.first && x.second == y.second)
     return true;
 
   data &dx = G.find(x)->second, &dy = G.find(y)->second;
@@ -107,34 +88,41 @@ void solve(const int &S, vpint &moves) {
 
   REP(i, SIZE(moves)) {
     pint p(moves[i]);
-    G.insert(std::make_pair(p, data(p, 1 << is_edge(S, p))));
+    G.emplace(p, data(p, 1 << is_edge(S, p)));
 
-    vpint C(L, std::make_pair(-1, -1));
+    vpint C(L, pint{-1, -1});
     REP(j, L) {
-      pint q(p.X + first[j], p.Y + second[j]);
-      if (G.find(q) != G.end())
+      pint q(p.first + first[j], p.second + second[j]);
+      if (G.find(q) != G.end()) {
         C[j] = find(G, q);
+      }
     }
     REP(j, L) {
-      pint q(p.X + first[j], p.Y + second[j]);
-      if (G.find(q) != G.end())
+      pint q(p.first + first[j], p.second + second[j]);
+      if (G.find(q) != G.end()) {
         join(G, p, q);
+      }
     }
 
     data &dx = G.find(find(G, p))->second;
     int corners = 0, edges = 0;
-    FOR(j, 1, 6)
-      if ((dx.mask >> j) & 1)
+    FOR(j, 1, 6) {
+      if ((dx.mask >> j) & 1) {
         edges++;
-    FOR(j, 7, 12)
-      if ((dx.mask >> j) & 1)
+      }
+    }
+    FOR(j, 7, 12) {
+      if ((dx.mask >> j) & 1) {
         corners++;
-    if (corners >= 2)
+      }
+    }
+    if (corners >= 2) {
       element += "bridge-";
-    if (edges >= 3)
+    }
+    if (edges >= 3) {
       element += "fork-";
-
-    REP(j, L)
+    }
+    REP(j, L) {
       if (in_board(S, C[j])) {
         int count = 0, empty = 0;
         FOR(k, j + 1, j + L)
@@ -148,7 +136,7 @@ void solve(const int &S, vpint &moves) {
           break;
         }
       }
-
+    }
     if (!element.empty()) {
       std::cout << element.substr(0, element.length() - 1) << " in move " << i + 1 << std::endl;
       return;
@@ -165,9 +153,9 @@ int main() {
     int S, M;
     std::cin >> S >> M;
     vpint moves(M);
-    REP(i, M)
-      std::cin >> moves[i].X >> moves[i].Y, moves[i].X--, moves[i].Y--;
-
+    REP(i, M) {
+      std::cin >> moves[i].first >> moves[i].second, moves[i].first--, moves[i].second--;
+    }
     printf("Case #%d: ", t + 1);
     solve(S, moves);
   }

@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-typedef int64_t llong;
+using llong = int64_t;
 
 std::string solve(const std::vector<llong> &F, const std::vector<llong> &G) {
   if (F.size() < G.size()) {

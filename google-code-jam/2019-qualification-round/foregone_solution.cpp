@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-tuple<std::string, std::string> solve(const std::string &S) {
+std::tuple<std::string, std::string> solve(const std::string &S) {
   std::string A(S.size(), '0'), B(S.size(), '0');
   for (std::size_t i = 0; i < S.size(); i++) {
     int v = S[i] - '0';
@@ -25,9 +25,9 @@ int main() {
   int T;
   std::cin >> T;
   for (int t = 0; t < T; t++) {
-    std::string A, B, S;
+    std::string S;
     std::cin >> S;
-    std::tie(A, B) = solve(S);
+    auto [A, B] = solve(S);
     printf("Case #%d: %s %s\n", t + 1, A.c_str(), B.c_str());
   }
   return 0;

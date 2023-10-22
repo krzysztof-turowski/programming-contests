@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-#define llong int64
+using llong = int64_t;
 
 const double HALF = 0.5;
 

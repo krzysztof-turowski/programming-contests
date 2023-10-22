@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-typedef int64_t llong;
+using llong = int64_t;
 
 llong solve(const int &K, std::vector<int> &F) {
   std::sort(F.begin(), F.end(), std::greater<int>());

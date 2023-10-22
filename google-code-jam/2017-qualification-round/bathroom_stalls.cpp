@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-typedef int64_t llong;
+using llong = int64_t;
 
 std::pair<llong, llong> solve(const llong &N, const llong &K) {
   std::priority_queue<std::pair<llong, llong>> Q;

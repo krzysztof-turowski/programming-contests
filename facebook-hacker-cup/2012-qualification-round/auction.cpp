@@ -11,19 +11,21 @@
 #include <string>
 #include <vector>
 
-const int64 MAX = 10000001;
+using llong = int64_t;
 
-int64 gcd(int64 a, int64 b) {
+const llong MAX = 10000001;
+
+llong gcd(llong a, llong b) {
   return b != 0 ? gcd(b, a % b) : a;
 }
 
 class Dicts {
-  std::vector<int64> low, high, low_count, high_count;
+  std::vector<llong> low, high, low_count, high_count;
 
  public:
   Dicts() : low(MAX, LLONG_MAX - 1), high(MAX, -1), low_count(MAX, 0), high_count(MAX, 0) { }
 
-  void insert(int64 p, int64 w, int64 delta) {
+  void insert(llong p, llong w, llong delta) {
     if (delta == 0) {
       return;
     }
@@ -39,9 +41,9 @@ class Dicts {
     }
   }
 
-  int64 lowest() {
-    int64 out = 0, minimum = LLONG_MAX - 1;
-    for (int64 i = 0; i < MAX; i++) {
+  llong lowest() {
+    llong out = 0, minimum = LLONG_MAX - 1;
+    for (llong i = 0; i < MAX; i++) {
       if (minimum > low[i]) {
         out += low_count[i], minimum = low[i];
       }
@@ -49,9 +51,9 @@ class Dicts {
     return out;
   }
 
-  int64 highest() {
-    int64 out = 0, maximum = -1;
-    for (int64 i = MAX - 1; i >= 0; i--) {
+  llong highest() {
+    llong out = 0, maximum = -1;
+    for (llong i = MAX - 1; i >= 0; i--) {
       if (maximum < high[i]) {
         out += high_count[i], maximum = high[i];
       }
@@ -60,7 +62,7 @@ class Dicts {
   }
 };
 
-void insert(std::deque<int64> &Q_min, std::deque<int64> &Q_max, int64 w) {
+void insert(std::deque<llong> &Q_min, std::deque<llong> &Q_max, llong w) {
   while (!Q_min.empty() && Q_min.back() > w) {
     Q_min.pop_back();
   }
@@ -70,7 +72,7 @@ void insert(std::deque<int64> &Q_min, std::deque<int64> &Q_max, int64 w) {
   Q_min.push_back(w), Q_max.push_back(w);
 }
 
-void remove(std::deque<int64> &Q_min, std::deque<int64> &Q_max, int64 w) {
+void remove(std::deque<llong> &Q_min, std::deque<llong> &Q_max, llong w) {
   if (!Q_min.empty() && Q_min.front() == w) {
     Q_min.pop_front();
   }
@@ -79,7 +81,7 @@ void remove(std::deque<int64> &Q_min, std::deque<int64> &Q_max, int64 w) {
   }
 }
 
-void add(Dicts &S, std::vector<int64> &P, std::vector<int64> &W, int64 length, int64 delta) {
+void add(Dicts &S, std::vector<llong> &P, std::vector<llong> &W, llong length, llong delta) {
   while (length % P.size()) {
     --length;
     S.insert(P[length % P.size()], W[length % W.size()], delta);
@@ -89,8 +91,8 @@ void add(Dicts &S, std::vector<int64> &P, std::vector<int64> &W, int64 length, i
     return;
   }
   for (int i = 0; i < gcd(P.size(), W.size()); i++) {
-    std::deque<int64> Q_min, Q_max;
-    int64 first = i;
+    std::deque<llong> Q_min, Q_max;
+    llong first = i;
     for (int j = 0; j < length; j++) {
       insert(Q_min, Q_max, W[(first + j * P.size()) % W.size()]);
     }
@@ -108,10 +110,10 @@ void add(Dicts &S, std::vector<int64> &P, std::vector<int64> &W, int64 length, i
   }
 }
 
-std::string solve(const std::vector<int64> &V) {
-  int64 p = V[1], w = V[2], n = V[0], index_p = -1, index_w = -1;
-  std::vector<std::pair<int64, int64>> buffer;
-  std::map<int64, int64> P_map, W_map;
+std::string solve(const std::vector<llong> &V) {
+  llong p = V[1], w = V[2], n = V[0], index_p = -1, index_w = -1;
+  std::vector<std::pair<llong, llong>> buffer;
+  std::map<llong, llong> P_map, W_map;
   Dicts S;
   for (int i = 0; i < n; i++) {
     if (P_map.count(p) && W_map.count(w)) {
@@ -123,7 +125,7 @@ std::string solve(const std::vector<int64> &V) {
     p = (V[5] * p + V[6]) % V[3] + 1, w = (V[7] * w + V[8]) % V[4] + 1;
   }
   if (index_p != -1 && index_w != -1) {
-    std::vector<int64> P, W;
+    std::vector<llong> P, W;
     for (int i = index_p; i > 0; i--) {
       P.push_back(p);
       p = (V[5] * p + V[6]) % V[3] + 1;
@@ -132,8 +134,8 @@ std::string solve(const std::vector<int64> &V) {
       W.push_back(w);
       w = (V[7] * w + V[8]) % V[4] + 1;
     }
-    int64 d = gcd(P.size(), W.size());
-    int64 m = static_cast<int64>(P.size()) / d * W.size();
+    llong d = gcd(P.size(), W.size());
+    llong m = static_cast<llong>(P.size()) / d * W.size();
     if (P.size() > W.size()) {
       std::swap(P, W);
       for (int i = 0; i < buffer.size(); i++) {
@@ -153,10 +155,10 @@ std::string solve(const std::vector<int64> &V) {
 }
 
 int main() {
-  int64 T;
+  llong T;
   std::cin >> T;
   for (int t = 0; t < T; t++) {
-    std::vector<int64> V(9);
+    std::vector<llong> V(9);
     for (int i = 0; i < 9; i++) {
       std::cin >> V[i];
     }

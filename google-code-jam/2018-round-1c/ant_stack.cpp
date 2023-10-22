@@ -8,11 +8,11 @@
 #include <string>
 #include <vector>
 
-typedef int64_t llong;
-typedef std::vector<llong> vllong;
+using llong = int64_t;
+using vllong = std::vector<llong>;
 
-int SIZE = 150;
-llong MAX = -1;
+const int SIZE = 150;
+const llong MAX = -1;
 
 int solve(const vllong &W, const int &N) {
   vllong G(SIZE, MAX);

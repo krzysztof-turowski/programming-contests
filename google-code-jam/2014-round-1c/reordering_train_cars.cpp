@@ -1,7 +1,3 @@
-#ifdef _MSC_VER
-  #define _CRT_SECURE_NO_WARNINGS
-#endif
-
 #include <cstdio>
 #include <iostream>
 #include <algorithm>
@@ -10,44 +6,31 @@
 #include <vector>
 #include <cmath>
 
-typedef int64_t llong;
-typedef long double ldouble;
-typedef std::pair<int, int> pint;
-typedef std::pair<double, double> pdouble;
-typedef std::vector<int> vint;
-typedef std::vector<double> vdouble;
-typedef std::vector<ldouble> vldouble;
-typedef std::vector<std::string> vstring;
-typedef std::vector<llong> vllong;
-typedef std::vector<vint> graph;
+using llong = uint64_t;
+using ldouble = long double;
+using vint = std::vector<int>;
+using vstring = std::vector<std::string>;
 
 #define FOR(v, p, k) for (int v = p; v <= k; ++v)
 #define FORD(v, p, k) for (int v = p; v >= k; --v)
 #define REP(i, n) for (int i = 0; i < (n); ++i)
-#define VAR(v, i) auto v = (i)
-#define FOREACH(i, c) for (VAR(i, (c).begin()); i != (c).end(); ++i)
 #define SIZE(x) static_cast<int>(x.size())
-#define ALL(c) c.begin(), c.end()
 
-#define ADD_EDGE(g, u, v) g[u].push_back(v), g[v].push_back(u)
-
-#define ST first
-#define ND second
-#define INF 1000000000LL
-#define EPS 1e-5
-#define MOD 1000000007ULL
+const llong MOD = 1000000007ULL;
 
 template <typename T>
 void print(T tab) {
-  REP(i, SIZE(tab))
+  REP(i, SIZE(tab)) {
     std::cout << tab[i] << " ";
+  }
   std::cout << std::endl;
 }
 
 llong factorial(int index) {
   llong out = 1ULL;
-  while (index > 1)
+  while (index > 1) {
     out = (out * static_cast<llong>(index)) % MOD, index--;
+  }
   return out;
 }
 
@@ -86,17 +69,18 @@ llong solve(vstring &S, int N) {
 
   vint A(26, -1), B(26, -1), C(26);
   int count = 0;
-  REP(i, N)
+  REP(i, N) {
     if (S[i][0] == S[i][1]) {
       C[S[i][0] - 'a']++;
     } else {
       A[S[i][0] - 'a'] = B[S[i][1] - 'a'] = i, count++;
     }
+  }
 
   // Visiting
   vint visited(N);
   int group = 0;
-  REP(i, 26)
+  REP(i, 26) {
     if (A[i] >= 0 && B[i] < 0) {
       group++;
       int index = A[i];
@@ -109,14 +93,15 @@ llong solve(vstring &S, int N) {
     } else if (A[i] < 0 && B[i] < 0 && C[i] > 0) {
       group++;
     }
-
+  }
   if (count > 0) {
     return 0;
   }
 
   llong out = factorial(group);
-  REP(i, 26)
+  REP(i, 26) {
     out = (out * factorial(C[i])) % MOD;
+  }
   return out;
 }
 
@@ -126,11 +111,10 @@ int main() {
   REP(t, T) {
     int N;
     std::cin >> N;
-
     vstring S(N);
-    REP(i, N)
+    REP(i, N) {
       std::cin >> S[i];
-
+    }
     printf("Case #%d: ", t + 1);
     std::cout << solve(S, N) << std::endl;
   }

@@ -6,7 +6,7 @@
 #include <vector>
 #include <cmath>
 
-typedef std::vector<std::vector<int>> graph;
+using graph = std::vector<std::vector<int>>;
 
 #define FOR(v, p, k) for (int v = p; v <= k; ++v)
 #define FORD(v, p, k) for (int v = p; v >= k; --v)

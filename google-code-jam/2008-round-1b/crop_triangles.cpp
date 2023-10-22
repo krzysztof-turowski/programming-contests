@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-typedef int64_t llong;
+using llong = int64_t;
 
 std::vector<std::pair<llong, llong>> generate_input(
     const int &N, const llong &A, const llong &B, const llong &C, const llong &D,

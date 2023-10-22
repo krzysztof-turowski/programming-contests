@@ -9,7 +9,7 @@
 
 #define INF 1000000
 
-typedef int64_t llong;
+using llong = int64_t;
 
 class FenwickTree {
   std::vector<int> R, F_min, F_max;
