@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def generate(V, N, VA):
     for _ in range(len(V), N):

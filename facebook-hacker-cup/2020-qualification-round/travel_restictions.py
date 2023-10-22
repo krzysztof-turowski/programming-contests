@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def solve(I, O, N):
     out = [['N' for _ in range(N)] for _ in range(N)]

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def solve(X):
     b_pos, o_pos, b_time, o_time = 1, 1, 0, 0

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 MAX = 1000001
 MOD = 1000000007

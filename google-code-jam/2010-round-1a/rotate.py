@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def rotate(A, N):
     B = [['.'] * N for _ in range(N)]

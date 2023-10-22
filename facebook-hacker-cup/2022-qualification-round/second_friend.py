@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def solve(R, C, S):
     if min(R, C) == 1:

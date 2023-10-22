@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def solve(X, S):
     out, start, end = 0, 0, len(S) - 1

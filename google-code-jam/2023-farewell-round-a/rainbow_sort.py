@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def solve(S):
     visited, out = {S[0]}, [S[0]]

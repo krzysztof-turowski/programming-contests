@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def strong_prefix_suffix(w, m):
     sB, t = [-1] + [0] * m, -1

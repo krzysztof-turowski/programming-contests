@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def get_values(B, transpose = False):
     values = [sum(1 for c in b if c == '.') for b in B if 'O' not in b]

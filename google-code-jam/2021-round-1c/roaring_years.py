@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def build(start, count):
     if count < 2 or start == '':

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def solve(L):
     return sum(sum(1 if q[1] > a[1] else 0 for q in L[:i])

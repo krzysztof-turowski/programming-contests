@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def solve(N, PD, PG):
     if (PD < 100 and PG == 100) or (PD > 0 and PG == 0):

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def bisect(L, v):
     low, high = -1, len(L)

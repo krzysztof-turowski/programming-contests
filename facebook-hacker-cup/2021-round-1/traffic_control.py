@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def solve(N, M, A, B):
     if min(A, B) < N + M - 1:

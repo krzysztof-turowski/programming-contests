@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def check(r, c, A):
     return (A[r][c] == '#' and A[r][c + 1] == '#' and A[r + 1][c] == '#'

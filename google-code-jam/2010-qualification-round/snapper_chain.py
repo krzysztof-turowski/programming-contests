@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def solve(N, K):
     return 'ON' if ((2 ** N - 1) & K) == 2 ** N - 1 else 'OFF'

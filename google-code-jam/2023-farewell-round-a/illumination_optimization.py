@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def solve(X, M, R):
     out, previous, current = 0, -R - 1, 0

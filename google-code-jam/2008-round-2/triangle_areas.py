@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def check(p1, p2, p3, A):
     x1, y1, x2, y2, x3, y3 = *p1, *p2, *p3

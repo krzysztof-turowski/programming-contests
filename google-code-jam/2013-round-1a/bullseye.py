@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def check(k, r, t):
     return k * (2 * k + 2 * r - 1) <= t

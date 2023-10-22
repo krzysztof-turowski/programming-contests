@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def solve(B):
     wins = [sum(1 if c == '1' else 0 for c in row) for row in B]

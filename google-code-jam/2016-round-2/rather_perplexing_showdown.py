@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def solve(P, R, S, A):
     if P == 1 and R == 0 and S == 0:

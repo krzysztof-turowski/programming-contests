@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 SHIFT = 5
 INF = 10 ** 4

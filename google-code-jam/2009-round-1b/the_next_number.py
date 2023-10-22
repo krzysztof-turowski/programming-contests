@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def solve(N):
     Ns = [int(x) for x in list(str(N))]

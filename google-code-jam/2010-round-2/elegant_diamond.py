@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def transpose(L, N):
     out = [[] for _ in L]

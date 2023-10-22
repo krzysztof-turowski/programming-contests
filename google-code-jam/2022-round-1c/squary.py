@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def solve(E, K):
     W1, W2 = sum(E), sum(a ** 2 for a in E)

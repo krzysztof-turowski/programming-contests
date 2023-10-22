@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def solve(N, C):
     P, L = [], list(range(1, N + 1))

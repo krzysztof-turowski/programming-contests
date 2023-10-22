@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def solve(N, K, C):
     if C <= (K // N) * N or K % N == 0:

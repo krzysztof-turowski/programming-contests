@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 TEXT, MOD = "welcome to code jam", 10000
 

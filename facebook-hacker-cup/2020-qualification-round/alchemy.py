@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def solve(C):
     return 'Y' if abs(sum(1 if c == 'A' else -1 for c in C)) == 1 else 'N'

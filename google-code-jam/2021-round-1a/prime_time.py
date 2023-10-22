@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def get_primes(n):
     primes, is_prime = [], [True] * n

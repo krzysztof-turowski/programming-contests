@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def get_last(B, C, index):
     for i in range(index, len(B)):

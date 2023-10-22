@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 MOD = 10 ** 9 + 7
 SIZE = 10 ** 6

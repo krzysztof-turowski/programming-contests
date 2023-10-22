@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def fit(S, F, W, H):
     if F * max(len(s) for s in S) > W:

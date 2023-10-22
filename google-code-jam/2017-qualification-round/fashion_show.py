@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def rooks(P, N):
     R, C = set(), set()

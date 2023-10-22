@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def solve(X, V, K, B, T):
     opt = [(B - x) / v for x, v in zip(X, V)]
