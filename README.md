@@ -1,6 +1,6 @@
 # programming-contests
 
-Code from various programming contests: Google Code Jam, Facebook Hacker Cup, SPOJ etc.
+Code from various programming contests: [Google Code Jam](https://github.com/google/coding-competitions-archive/), [Meta Hacker Cup](https://www.facebook.com/codingcompetitions/hacker-cup) etc.
 
 ## Google Code Jam results
 
