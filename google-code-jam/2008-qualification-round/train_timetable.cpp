@@ -1,11 +1,15 @@
 #include <algorithm>
 #include <cassert>
+#include <cstdio>
+#include <functional>
 #include <fstream>
 #include <iostream>
 #include <map>
 #include <queue>
 #include <set>
 #include <string>
+#include <tuple>
+#include <utility>
 #include <vector>
 
 std::tuple<int, int> solve(

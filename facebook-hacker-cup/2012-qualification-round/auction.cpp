@@ -2,6 +2,8 @@
 #include <cassert>
 #include <climits>
 #include <cmath>
+#include <cstdio>
+#include <deque>
 #include <fstream>
 #include <iostream>
 #include <map>
@@ -9,6 +11,7 @@
 #include <set>
 #include <sstream>
 #include <string>
+#include <utility>
 #include <vector>
 
 using llong = int64_t;

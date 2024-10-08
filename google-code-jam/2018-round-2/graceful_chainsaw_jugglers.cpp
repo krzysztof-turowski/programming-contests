@@ -1,3 +1,5 @@
+#include <algorithm>
+#include <cstdio>
 #include <iostream>
 
 const int MAX = 501, MAX_ELEMENT = 50;

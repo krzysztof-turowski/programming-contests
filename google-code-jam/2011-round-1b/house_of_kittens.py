@@ -17,8 +17,7 @@ def build_graph(N, E):
     return G
 
 def get_angle(a, b, c):
-    angle = (math.atan2(c[1] - b[1], c[0] - b[0])
-             - math.atan2(a[1] - b[1], a[0] - b[0]))
+    angle = math.atan2(c[1] - b[1], c[0] - b[0]) - math.atan2(a[1] - b[1], a[0] - b[0])
     return angle if angle >= 0 else angle + 2 * math.pi
 
 def sort_neighbors(G, P):
@@ -50,8 +49,7 @@ def align_polygon(polygon, index, colors):
 
 def solve(N, E):
     G = build_graph(N, E)
-    P = [(math.sin(2 * math.pi * i / N), math.cos(2 * math.pi * i / N))
-         for i in range(N)]
+    P = [(math.sin(2 * math.pi * i / N), math.cos(2 * math.pi * i / N)) for i in range(N)]
     sort_neighbors(G, P)
     polygons = split_polygons(G)
     colors = min(len(p) for p in polygons)

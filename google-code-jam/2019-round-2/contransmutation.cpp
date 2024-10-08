@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <cassert>
+#include <cstdio>
 #include <fstream>
 #include <iostream>
 #include <map>
@@ -7,6 +8,7 @@
 #include <set>
 #include <stack>
 #include <string>
+#include <utility>
 #include <vector>
 
 using llong = int64_t;

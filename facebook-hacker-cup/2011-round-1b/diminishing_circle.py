@@ -3,8 +3,10 @@
 import functools
 
 def solve(N, K):
-    f = lambda a, K, N: (a + K) % N
-    g = lambda a, K, N, Np: (K * ((a - N % K) % Np)) // (K - 1)
+    def f(a, K, N):
+        return (a + K) % N
+    def g(a, K, N, Np):
+        return (K * ((a - N % K) % Np)) // (K - 1)
     L = []
     while N > 1:
         if N < K:

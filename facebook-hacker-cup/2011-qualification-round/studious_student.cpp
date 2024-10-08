@@ -1,11 +1,13 @@
 #include <algorithm>
 #include <cassert>
+#include <cstdio>
 #include <fstream>
 #include <iostream>
 #include <map>
 #include <set>
 #include <sstream>
 #include <string>
+#include <utility>
 #include <vector>
 
 std::string solve(std::vector<std::string> &S, const int &left, const int &right) {

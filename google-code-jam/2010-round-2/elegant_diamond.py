@@ -18,8 +18,10 @@ def get_symmetries(R, N, extend):
 def solve(L, N):
     def apply(S, f):
         return min(set.intersection(*(get_symmetries(row, N, f) for row in S)))
-    left = lambda R, i: R[len(R) - i:][::-1] + R
-    right = lambda R, i: R + R[:i][::-1]
+    def left(R, i):
+        return R[len(R) - i:][::-1] + R
+    def right(R, i):
+        return R + R[:i][::-1]
     L_rev = transpose(L, N)
     horizontal_left, horizontal_right = apply(L, left), apply(L, right)
     vertical_left, vertical_right = apply(L_rev, left), apply(L_rev, right)

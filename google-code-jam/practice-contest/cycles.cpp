@@ -1,11 +1,13 @@
 #include <algorithm>
 #include <cassert>
+#include <cstdio>
 #include <fstream>
 #include <iostream>
 #include <map>
 #include <queue>
 #include <set>
 #include <string>
+#include <utility>
 #include <vector>
 
 const int MOD = 9901;

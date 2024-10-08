@@ -1,6 +1,8 @@
 #include <algorithm>
 #include <cassert>
+#include <cstdio>
 #include <fstream>
+#include <functional>
 #include <iostream>
 #include <map>
 #include <queue>

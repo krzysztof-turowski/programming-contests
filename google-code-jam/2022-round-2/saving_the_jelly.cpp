@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cassert>
 #include <cmath>
+#include <cstdio>
 #include <fstream>
 #include <iostream>
 #include <map>
@@ -8,6 +9,7 @@
 #include <string>
 #include <sstream>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
 double distance(const std::pair<double, double> &a, const std::pair<double, double> &b) {

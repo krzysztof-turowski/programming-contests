@@ -1,6 +1,8 @@
 #include <algorithm>
 #include <cmath>
+#include <cstdio>
 #include <iostream>
+#include <utility>
 #include <vector>
 
 using ldouble = long double;

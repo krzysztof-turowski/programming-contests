@@ -1,11 +1,13 @@
 #include <algorithm>
 #include <cassert>
+#include <cstdio>
 #include <fstream>
 #include <iostream>
 #include <map>
 #include <set>
 #include <sstream>
 #include <string>
+#include <utility>
 #include <vector>
 
 std::vector<std::string> generate_board(const int &R, const int &C) {

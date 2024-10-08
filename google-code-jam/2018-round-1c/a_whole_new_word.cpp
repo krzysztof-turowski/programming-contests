@@ -1,5 +1,7 @@
+#include <cstdio>
 #include <iostream>
 #include <set>
+#include <string>
 #include <vector>
 
 bool check_word(

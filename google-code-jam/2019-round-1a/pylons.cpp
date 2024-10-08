@@ -1,10 +1,13 @@
 #include <algorithm>
 #include <cassert>
+#include <cstdio>
 #include <fstream>
 #include <iostream>
 #include <map>
 #include <set>
 #include <string>
+#include <tuple>
+#include <utility>
 #include <vector>
 
 std::tuple<std::string, std::vector<std::pair<int, int>>> solve(const int &R, const int &C) {

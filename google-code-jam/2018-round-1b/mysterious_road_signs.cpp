@@ -1,4 +1,7 @@
+#include <algorithm>
+#include <cstdio>
 #include <iostream>
+#include <utility>
 #include <vector>
 
 #define INF 10000000
