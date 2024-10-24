@@ -80,3 +80,7 @@ Code from various programming contests: [Google Code Jam](https://github.com/goo
   - Qualification Round: 851th place, 2/5 problems
   - Round 1: 1248th place, 5/7 problems
   - Round 2: 1796th place, 2/5 problems
+- 2024
+  - Qualification Round: 22nd place, 5/5 problems
+  - Round 1: 2696th place, 2/5 problems
+  - Round 2: 2112nd place, 1/5 problems
